@@ -1,16 +1,20 @@
+import CartWidget from "./CartWidget"
+
 const NavBar = () => {
-    return(<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container-fluid">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li class="nav-link" ><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-link" ><a class="nav-link" href="#">Nuestros productos</a></li>
-                <li class="nav-link" ><a class="nav-link" href="#">Nuestras ofertas</a></li>
-                <li class="nav-link" ><a class="nav-link" href="#">Nosotros</a></li>
+    return(<nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top barraEstilo">
+    <div className="container-fluid">
+        <nav className="navbar navbar-inverse">
+            <div className="container-fluid ">
+            <ul className="nav navbar-nav menuPrincipal">
+                <li className="nav-link" ><a className="nav-link" href="#">Home</a></li>
+                <li className="nav-link" ><a className="nav-link" href="#">Nuestros productos</a></li>
+                <li className="nav-link" ><a className="nav-link" href="#">Nuestras ofertas</a></li>
+                <li className="nav-link" ><a className="nav-link" href="#">Sobre Nosotros</a></li>
+                <li><CartWidget/></li>
             </ul>
             </div>
         </nav>
+        
     </div>
 </nav>
     )}

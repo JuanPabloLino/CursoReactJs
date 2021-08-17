@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(190, 190, 190);
+}
+
+.material-icons{
+    color: rgb(190, 190, 190);;
+    text-decoration: none;
+
+}
+
+.menuPrincipal{
+    display: flex;
+    align-items: center
+}
+
+
+.listaProductos{
+    padding-top: 1em;
+    font-size: 20px;
+}
