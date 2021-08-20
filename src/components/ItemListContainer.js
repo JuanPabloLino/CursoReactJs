@@ -6,7 +6,6 @@ const ItemListContainer = ({marca,modelo}) => {
             <li>Marca: {marca}. Modelo: {modelo}.</li>
         </ul>
     </div>
-    
 )
 }
 

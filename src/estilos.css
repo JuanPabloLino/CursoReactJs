@@ -18,3 +18,21 @@ body{
     padding-top: 1em;
     font-size: 20px;
 }
+
+.cuadro{
+    border: 2px solid black;
+    width: 10em;
+    height: 10em;
+    color: red;
+    padding: 1em;
+    margin: 3em;
+}
+
+.botonesCuadro{
+    display: flex;
+
+}
+
+.botonesCuadro input{
+    width: 50%;
+}
