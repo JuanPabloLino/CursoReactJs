@@ -23,13 +23,17 @@ body{
     border: 2px solid black;
     width: 10em;
     height: 10em;
-    color: red;
+    color: rgb(36, 34, 34);
     padding: 1em;
     margin: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .botonesCuadro{
     display: flex;
+    justify-content: space-around;
 
 }
 
