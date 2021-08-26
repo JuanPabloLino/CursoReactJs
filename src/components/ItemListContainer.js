@@ -1,12 +1,13 @@
-const ItemListContainer = ({marca,modelo}) => {
+import ItemList from "./ItemsList"
 
+const ItemListContainer = () => {
     return(
-    <div>
-        <ul className="listaProductos">
-            <li>Marca: {marca}. Modelo: {modelo}.</li>
-        </ul>
+    <div className="productsList">
+        <ItemList/>
     </div>
 )
+
+
 }
 
 export default ItemListContainer;

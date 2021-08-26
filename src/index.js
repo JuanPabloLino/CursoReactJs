@@ -9,16 +9,13 @@
 
 Esto lo vamos a hacer mediante Imports;
 */
-
-
 //1
-import React from "react"
-
+import React from "react";
 //2
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom";
 //3 Importo el componente de App.js. La forma que se debe escrbirir es:
-import App from "./App"
+import App from "./App";
 
-import "./estilos.css"
+import "./estilos.css";
 //4
 ReactDOM.render(<App/>,document.querySelector("#root"));

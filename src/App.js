@@ -6,7 +6,7 @@ const App = () =>{
   return (
     <>
       <NavBar />
-      <ItemListContainer marca="Gibson" modelo ="Les Paul 2018"/>
+      <ItemListContainer/>
       <ItemCount stock={5} initial={1} onAdd={0}/>
     </>
   )
