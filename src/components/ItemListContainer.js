@@ -1,13 +1,24 @@
-import ItemList from "./ItemsList"
+import items from "./Items"
+import { useEffect } from "react";
+import { useState } from "react";
+import ItemList from "./ItemsList";
 
 const ItemListContainer = () => {
-    return(
-    <div className="productsList">
-        <ItemList/>
-    </div>
-)
 
+    const promiseItem = () =>{
+        return new Promise((resolve,reject)=>{
+        setTimeout(()=>
+            resolve(items),2000
+        )})};
+        const [itemToShow, setItemShow] = useState([]);
+        useEffect(()=>{
+            promiseItem().then((item)=>{
+                setItemShow(item)
+            })}, []);
 
-}
+        return(
+            <ItemList/>
+        )
+    }
 
 export default ItemListContainer;
