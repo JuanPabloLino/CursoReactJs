@@ -1,23 +1,15 @@
-import itemToShow from "./ItemListContainer"
-import Items from "./Items"
+import React from "react";
+import Item  from "./Item";
 
+export const ItemsList = ({productos}) => {
 
-export const ItemList = () =>{
+return(productos.length === 0 ? (
+    <p>Cargando..</p>
+    )   :   (
+    productos.map((producto) =>(
+    <Item producto={producto}/>
+))))
 
-    itemToShow.length == 0 ? (
-        <p>Cargando...</p>
-    ) : (
-            <ul>
-                {itemToShow.map((atribute) => (
-                    <ul>
-                        <li key ={atribute.id}>Id: {atribute.id}, Marca: {atribute.marca} , Modelo: {atribute.modelo}</li>
-                    </ul>
-                ))}
-            </ul>
-    )
-
-return( <Items/>)
 }
 
-export default ItemList;
-
+export default ItemsList;

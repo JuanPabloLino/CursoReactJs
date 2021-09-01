@@ -6,10 +6,10 @@ const NavBar = () => {
         <nav className="navbar navbar-inverse">
             <div className="container-fluid ">
             <ul className="nav navbar-nav menuPrincipal">
-                <li className="nav-link" ><a className="nav-link" href="#">Home</a></li>
-                <li className="nav-link" ><a className="nav-link" href="#">Nuestros productos</a></li>
-                <li className="nav-link" ><a className="nav-link" href="#">Nuestras ofertas</a></li>
-                <li className="nav-link" ><a className="nav-link" href="#">Sobre Nosotros</a></li>
+                <li className="nav-link" ><a className="nav-link" href="https://www.google.com/?hl=es">Home</a></li>
+                <li className="nav-link" ><a className="nav-link" href="https://www.google.com/?hl=es">Nuestros productos</a></li>
+                <li className="nav-link" ><a className="nav-link" href="https://www.google.com/?hl=es">Nuestras ofertas</a></li>
+                <li className="nav-link" ><a className="nav-link" href="https://www.google.com/?hl=es">Sobre Nosotros</a></li>
                 <li><CartWidget/></li>
             </ul>
             </div>

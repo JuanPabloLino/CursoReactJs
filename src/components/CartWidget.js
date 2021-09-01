@@ -1,7 +1,7 @@
 const CartWidget = () => {
 
     return (
-        <a href= "#" className="material-icons">shopping_cart</a>
+        <a href= "https://www.google.com/?hl=es" className="material-icons">shopping_cart</a>
     );
 }
 
