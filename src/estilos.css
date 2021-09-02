@@ -48,3 +48,9 @@ ul,li{
 .productsList ul{
     padding-top: 1em;
 }
+
+.imagenGuitarra img{
+    width:6em;
+    height:6em;
+    border-style: none;
+}
