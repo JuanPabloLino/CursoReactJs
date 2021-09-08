@@ -2,14 +2,18 @@ body{
     background-color: rgb(190, 190, 190);
 }
 
-ul,li{
-    list-style: none;
+div{
+    display:contents;
 }
 
 .material-icons{
     color: rgb(190, 190, 190);;
     text-decoration: none;
 
+}
+
+.navbarCss{
+    height: 2.5em;
 }
 
 .menuPrincipal{
@@ -49,8 +53,66 @@ ul,li{
     padding-top: 1em;
 }
 
+.imagenGuitarra{
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .imagenGuitarra img{
-    width:6em;
-    height:6em;
-    border-style: none;
+    width:auto;
+    height:10em;
+
+}
+
+/* Landing Page Start */
+
+.buttonsHome{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(200, 202, 202);
+    height: 8em;
+    align-items: center;
+}
+
+.containerPotada{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+
+}
+.titlePortada{
+    font-family: var(--bs-body-font-family);
+    text-align: center;
+    background-color: rgb(200, 202, 202);
+    margin-bottom: 0em;
+}
+
+.portadaInicio{
+    width: 50%;
+    height: auto;
+}
+
+/* Landing Page End */
+
+/* Lista Todos los productos */
+
+.columnaProductos{
+margin: 1em;
+padding-bottom: 4px;
+}
+
+
+/* Lista Todos los productos */
+
+
+.seccion{
+    display: flex;
+}
+
+.listaTodos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around
 }

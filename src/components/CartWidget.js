@@ -1,7 +1,8 @@
+import React from 'react';
 const CartWidget = () => {
 
     return (
-        <a href= "https://www.google.com/?hl=es" className="material-icons">shopping_cart</a>
+        <a href= "./ItemCount" className="material-icons">shopping_cart</a>
     );
 }
 

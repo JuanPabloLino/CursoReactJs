@@ -3,12 +3,14 @@ import Item  from "./Item";
 
 export const ItemsList = ({productos}) => {
 return(productos.length === 0 ? (
-    <p>Cargando..</p>
+    <div className="row text-center">
+                <p>Cargando..</p></div>
     )   :   (
     productos.map((producto) =>(
-    <Item producto={producto}/>
+    <div key={producto.id} className="row">
+        <Item producto={producto}/>
+    </div>
 ))))
-
 }
 
 export default ItemsList;

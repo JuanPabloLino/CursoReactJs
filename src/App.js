@@ -1,16 +1,23 @@
+import React from 'react';
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
-import ItemCount from "./components/ItemCount";
 import ItemDetailContainer  from "./components/ItemDatailContainer";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from './components/LandingPage';
+import { DetalleDeProducto } from './components/DetalleDeProducto';
 
 const App = () =>{
   return (
-    <>
+    <BrowserRouter>
       <NavBar/>
-      <ItemListContainer/>
-      <ItemCount stock={5} initial={1} onAdd={0}/>
-      <ItemDetailContainer/>
-    </>
+      <Switch>
+        <Route exact path="/"component={Home} />
+        <Route exact path="/item" component= {ItemListContainer} />
+        <Route path="/categoria/:destacado" component= {ItemDetailContainer} />
+        <Route exact path="/item/:id" component= {DetalleDeProducto} />
+      </Switch>
+
+    </BrowserRouter>
   )
 }
 
