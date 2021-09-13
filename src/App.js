@@ -4,18 +4,22 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer  from "./components/ItemDatailContainer";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from './components/LandingPage';
-import { DetalleDeProducto } from './components/DetalleDeProducto';
+
+//import CustomProvider from './components/Contexto';
 
 const App = () =>{
+
   return (
     <BrowserRouter>
-      <NavBar/>
-      <Switch>
-        <Route exact path="/"component={Home} />
-        <Route exact path="/item" component= {ItemListContainer} />
-        <Route path="/categoria/:destacado" component= {ItemDetailContainer} />
-        <Route exact path="/item/:id" component= {DetalleDeProducto} />
-      </Switch>
+      {/*<CustomProvider> */}
+        <NavBar/>
+          <Switch>
+              <Route exact path="/"component={Home} />
+              <Route exact path="/item" component= {ItemListContainer} />
+              <Route path="/categoria/:destacado" component= {ItemListContainer} />
+              <Route exact path="/item/:id" component= {ItemDetailContainer} />
+          </Switch>
+      {/* </CustomProvider> */}
 
     </BrowserRouter>
   )
