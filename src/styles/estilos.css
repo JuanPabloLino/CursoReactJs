@@ -2,8 +2,16 @@ body{
     background-color: rgb(190, 190, 190);
 }
 
+a{
+    text-decoration: none;
+}
+
 div{
     display:contents;
+}
+
+.vistaProducto{
+    
 }
 
 .material-icons{

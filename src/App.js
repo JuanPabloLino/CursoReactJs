@@ -3,24 +3,24 @@ import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer  from "./components/ItemDatailContainer";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Home from './components/LandingPage';
-
-//import CustomProvider from './components/Contexto';
+import CustomProvider from './components/CartContext';
+import Cart from "./components/Cart"
 
 const App = () =>{
 
   return (
     <BrowserRouter>
-      {/*<CustomProvider> */}
+      <CustomProvider>
         <NavBar/>
           <Switch>
-              <Route exact path="/"component={Home} />
-              <Route exact path="/item" component= {ItemListContainer} />
-              <Route path="/categoria/:destacado" component= {ItemListContainer} />
+              <Route exact path="/" component= {ItemListContainer} />
+              <Route exact path="/categoria/:destacado" component= {ItemListContainer} />
+              <Route exact path="/:tipoAcustica" component= {ItemListContainer} />
+              <Route exact path="/guitarra/:tipoElectrica" component= {ItemListContainer} />
               <Route exact path="/item/:id" component= {ItemDetailContainer} />
+              <Route path="/chango/cart" component={Cart} />
           </Switch>
-      {/* </CustomProvider> */}
-
+      </CustomProvider>
     </BrowserRouter>
   )
 }

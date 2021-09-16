@@ -16,6 +16,6 @@ import ReactDOM from "react-dom";
 //3 Importo el componente de App.js. La forma que se debe escrbirir es:
 import App from "./App";
 
-import "./estilos.css";
+import "./styles/estilos.css";
 //4
 ReactDOM.render(<App/>,document.querySelector("#root"));

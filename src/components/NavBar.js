@@ -8,9 +8,10 @@ const NavBar = () => {
         <nav className="navbar navbar-inverse">
             <div className="container-fluid ">
             <ul className="nav navbar-nav menuPrincipal">
-                <li className="nav-link" ><Link className="nav-link" to="/">Home</Link></li>
-                <li className="nav-link" ><Link className="nav-link" to="/item">Nuestros productos</Link></li>
+                <li className="nav-link" ><Link className="nav-link" to="/">Todos los productos</Link></li>
                 <li className="nav-link" ><Link className="nav-link" to="/categoria/:destacado">Nuestras ofertas</Link></li>
+                <li className="nav-link" ><Link className="nav-link" to="/:tipoAcustica">Acústicas</Link></li>
+                <li className="nav-link" ><Link className="nav-link" to="/guitarra/:tipoElectrica">Eléctricas</Link></li>
                 <li className="nav-link" ><Link className="nav-link" to="/nosotros">Sobre Nosotros</Link></li>
                 <li><CartWidget/></li>
             </ul>

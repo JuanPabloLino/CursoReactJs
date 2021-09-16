@@ -1,11 +1,11 @@
 import React from "react";
-import URL_API from "./URL";
+import URL_API from "../URL"
 import {useState,useEffect} from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router";
 
 export const ItemDetailContainer = () =>{
-    const {id} = useParams();
+    const {id} = useParams({});
 
     const [productoDetallado,setProducto] = useState([]);
 
@@ -17,11 +17,11 @@ export const ItemDetailContainer = () =>{
                         fetch(URL_API)
                         .then(response => response.json())
                         .then(response =>{
-                        let producto
+                            let producto
                             if(id){
-                                producto = response.filter((element)=> element.id === parseInt(id,10));
+                                producto = response.find(element => element.id === parseInt(id,10));
+                                setProducto(producto);
                             }
-                            setProducto(producto[0]);
                         })
                     )
                     ,2000

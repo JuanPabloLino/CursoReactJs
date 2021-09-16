@@ -1,12 +1,12 @@
 import {useEffect,useState} from "react";
 import React from 'react';
 import ItemList from './ItemsList'
-import URL_API from "./URL";
+import URL_API from "../URL"
 import { useParams } from "react-router";
 
 
 export const ItemListContainer = () =>{
-    const {destacado} = useParams();
+    const {tipoAcustica,destacado,tipoElectrica} = useParams();
     const [productos,setProducto] = useState([]);
 
         useEffect(() =>  {
@@ -19,22 +19,32 @@ export const ItemListContainer = () =>{
                         .then(response =>{
                             if(destacado){
                                 let oferta
-                                oferta = response.filter((element)=> element.destacado === true);
+                                oferta = response.filter((e)=> e.destacado)
                                 setProducto(oferta);
-                            }else{setProducto(response)}
+                            }
+                            else if(tipoAcustica){
+                                let typeAcustica
+                                typeAcustica = response.filter((e)=> e.type === "acústica")
+                                setProducto(typeAcustica);
+                            }
+                            else if(tipoElectrica){
+                                let typeElectrica
+                                typeElectrica = response.filter((e)=> e.type === "eléctrica")
+                                setProducto(typeElectrica)}
+                            else{setProducto(response)}
                         }))
-                    ,2000
+                    ,0
                     )})};
             getItems()
-            }, [destacado]);
+            }, [destacado,tipoElectrica,tipoAcustica]);
             return (
-                <section className="container py-5">
-                    <div className="container px-4 px-lg-5 mt-5 text-center" >
-                    <h3>Nuestras Guitarras:</h3>
-                        <div className="col gx-4 gx-lg-5 row-cols-2  row-cols-xl-4 justify-content-center ">
-                            < ItemList producto={productos} />
+                <section>
+                    <div className="col text-center justify-content-center" >
+                        <h3 className="mt-3">Nuestras Guitarras:</h3>
+                            <div className="d-flex row justify-content-center">
+                                < ItemList producto={productos} />
+                            </div>
                         </div>
-                    </div>
                 </section>
                 )
     }

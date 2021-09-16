@@ -8,7 +8,7 @@ return(producto.length === 0 ? (
                 <p>Cargando..</p></div>
     )   :   (
     producto.map((producto) =>(
-    <div key={producto.id} className="col">
+    <div key={producto.id} className="vistaProducto" >
         <Item producto={producto}/>
     </div>
 ))))
