@@ -38,13 +38,13 @@ export const ItemListContainer = () =>{
             getItems()
             }, [destacado,tipoElectrica,tipoAcustica]);
             return (
-                <section>
-                    <div className="col text-center justify-content-center" >
+                <section className="container justify-content-center">
+                    <div className="text-center" >
                         <h3 className="mt-3">Nuestras Guitarras:</h3>
-                            <div className="d-flex row justify-content-center">
-                                < ItemList producto={productos} />
-                            </div>
+                        <div className="row justify-content-center">
+                            < ItemList producto={productos} />
                         </div>
+                    </div>
                 </section>
                 )
     }

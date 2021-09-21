@@ -1,15 +1,12 @@
 import { React } from "react";
 import { Link } from "react-router-dom";
 
-
-
 export const Item = ({producto}) =>{
-    //const {addProduct} = useContext(contexto) /* FALTA RESULT */
 
     return(
             <div className="row justify-content-center m-5">
                 <div className="col m-5">
-                    <div key={producto.id} className="card h-100 mb-2 text-aling-center">
+                    <div key={producto.id} className="card vistaProducto mb-2 text-aling-center">
                         <div className="text-center ">
                             <h3 className="m-3">Guitarra {producto.marca}</h3>
                         </div>

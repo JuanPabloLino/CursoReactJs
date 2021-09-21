@@ -30,7 +30,7 @@ export const ItemDetailContainer = () =>{
             getItem()
         }, [id]);
         return (
-        <section className="container py-5">
+        <section className="container d-flex justify-content-center py-5">
             <div className="container px-4 px-lg-5 mt-5 text-center" >
                 < ItemDetail producto={productoDetallado} />
             </div>

@@ -3,11 +3,10 @@ import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer  from "./components/ItemDatailContainer";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import CustomProvider from './components/CartContext';
+import CustomProvider from './context/CartContext';
 import Cart from "./components/Cart"
 
 const App = () =>{
-
   return (
     <BrowserRouter>
       <CustomProvider>

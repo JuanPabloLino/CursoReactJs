@@ -10,10 +10,6 @@ div{
     display:contents;
 }
 
-.vistaProducto{
-    
-}
-
 .material-icons{
     color: rgb(190, 190, 190);;
     text-decoration: none;
@@ -114,6 +110,13 @@ padding-bottom: 4px;
 
 /* Lista Todos los productos */
 
+.vistaProducto{
+    width: 15rem;
+}
+
+.vistaProductoDetallada{
+    width: 30rem;
+}
 
 .seccion{
     display: flex;
@@ -123,4 +126,11 @@ padding-bottom: 4px;
     display: flex;
     flex-direction: column;
     justify-content: space-around
+}
+
+
+/* Carrito */
+
+.imagenCarrito{
+    height: 130px;
 }
