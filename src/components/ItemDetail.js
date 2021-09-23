@@ -19,13 +19,13 @@ export const ItemDetail = ({producto}) =>{
                     <div className="col m-5">
                         <div key={producto.id} className="card h-100 mb-4">
                             <div className="text-center ">
-                                <h3 className="mt-3">Guitarra {producto.marca}</h3>
+                                <h3 className="mt-3">Guitarra {producto.mark}</h3>
                             </div>
                             <div className="imagenGuitarra">
                                 <img alt="Item" className="card-img-top imagenGuitarra m-4" src={producto.image}/>
                             </div>
                             <div className="card-body  text-center">
-                                <h5 className="m-2">{producto.marca} {producto.modelo}</h5>
+                                <h5 className="m-2">{producto.mark} {producto.model}</h5>
                             </div>
                             <div className="card-body text-center">
                                 <p className="m-2 lead">Precio: ${producto.price}</p>

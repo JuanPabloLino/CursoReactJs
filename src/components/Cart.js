@@ -34,7 +34,7 @@ const Cart = () => {
                                         <img className="imagenCarrito mt-3" alt="Imagen" src={e.producto.image} />
                                     </div>
                                     <div className="d-flex justify-content-center">
-                                        <p className="mt-5">{e.producto.marca} {e.producto.modelo} (X{e.cantidad})</p>
+                                        <p className="mt-5">{e.producto.mark} {e.producto.model} (X{e.cantidad})</p>
                                     </div>
                                     <div className="d-flex justify-content-center">
                                         <button className="btn btn-danger mb-3 w-50" onClick={()=>removeProduct(e.producto.id)} >Eliminar producto</button>
@@ -53,6 +53,9 @@ const Cart = () => {
                             </div>
                             <div>
                                 <a className="nav-link"><button className="btn btn-danger w-100" onClick={()=>clear()}>Limpiar Carrito</button></a>
+                            </div>
+                            <div className="d-flex text-center justify-content-center">
+                                <p className="mx-2">Envío Gratis</p><p className="material-icons">local_shipping</p>
                             </div>
                         </div>
                     </div>

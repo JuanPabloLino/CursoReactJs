@@ -13,7 +13,7 @@ const App = () =>{
         <NavBar/>
           <Switch>
               <Route exact path="/" component= {ItemListContainer} />
-              <Route exact path="/categoria/:destacado" component= {ItemListContainer} />
+              <Route exact path="/categoria/:sale" component= {ItemListContainer} />
               <Route exact path="/:tipoAcustica" component= {ItemListContainer} />
               <Route exact path="/guitarra/:tipoElectrica" component= {ItemListContainer} />
               <Route exact path="/item/:id" component= {ItemDetailContainer} />
