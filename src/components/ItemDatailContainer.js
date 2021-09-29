@@ -9,25 +9,27 @@ export const ItemDetailContainer = () =>{
 
     const [productoDetallado,setProducto] = useState([]);
 
-        useEffect(() =>  {
-            const coleccion=firestore.collection("productos")
-            const query=coleccion.get()
-                query.then((snapshot)=>{
-                    snapshot.forEach(doc => {
-                        if (doc.id === id) {
-                            setProducto(doc.data())
-                        }})})},[id])
-
-
+    useEffect(() =>  {
+        const coleccion = firestore.collection("productos");
+        const query = coleccion.get();
+            query
+                .then((snapshot)=>{
+                snapshot.forEach(doc => {
+                    if (doc.id === id) {
+                        setProducto(doc.data())
+                    };
+                });
+            });
+    },[id]);
 
         return (
-        <section className="container d-flex justify-content-center py-5">
-            <div className="container px-4 px-lg-5 mt-5 text-center" >
-                < ItemDetail producto={productoDetallado} />
-            </div>
-        </section>
-            )
-    }
+            <section className="container d-flex justify-content-center py-5">
+                <div className="row justify-content-center principal__listadoProductosDetallados">
+                    < ItemDetail producto={productoDetallado} />
+                </div>
+            </section>
+        )
+}
 
 
 export default ItemDetailContainer;

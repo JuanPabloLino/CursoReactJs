@@ -10,8 +10,8 @@ export const Item = ({producto}) =>{
                         <div className="text-center ">
                             <h3 className="m-3">Guitarra {producto.mark}</h3>
                         </div>
-                        <div className="imagenGuitarra">
-                            <img alt="Item" className="card-img-top imagenGuitarra m-4" src={producto.image }/>
+                        <div className="imagenGuitarraLista">
+                            <img alt="Item" className="card-img-top m-4" src={producto.image }/>
                         </div>
                         <div className="card-body  text-center">
                             <h4 className="m-2">{producto.mark}</h4>

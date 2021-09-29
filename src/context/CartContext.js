@@ -7,8 +7,8 @@ const CustomProvider = ({children}) => {
     const [Carrito,setCarrito] = useState([])
 
     function addProducto(producto,cantidad){
-        let exist=Carrito.find(i=>i.producto.id===producto.id)
-        if(exist!==undefined){
+        let exist = Carrito.find( i => i.producto.id === producto.id)
+        if(exist !== undefined){
             for (const a of Carrito) {
                 if(a.producto.id === producto.id){
                     a.cantidad += cantidad

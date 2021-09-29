@@ -14,17 +14,15 @@ const ItemCount = ({stock,initial,onAdd}) => {
         }};
 
     return (
-        <div className="">
-            <div className=" border border-dark rounded">
+        <div  className="botoneraContainer">
+            <div className="botonera">
+            <div className="buttonsBotonera">
+                    <button className="btn btn-outline-dark" onClick={resta}>-</button>
+                        <span className="">{count}</span>
+                    <button className="btn btn-outline-dark" onClick={suma}>+</button>
+                </div>
                 <div className="">
-                        <div className="d-flex justify-content-center align-items-center mb-4">
-                            <button className="btn btn-outline-dark mx-4" onClick={resta}>-</button>
-                                <span className="">{count}</span>
-                            <button className="btn btn-outline-dark mx-4" onClick={suma}>+</button>
-                        </div>
-                        <div className="d-flex justify-content-center">
-                            <button className="btn btn-outline-dark w-50" onClick={()=>onAdd(count)}>Agregar al Carrito</button>
-                        </div>
+                    <button className="btn btn-outline-dark w-50" onClick={()=>onAdd(count)}>Agregar al Carrito</button>
                 </div>
             </div>
         </div>

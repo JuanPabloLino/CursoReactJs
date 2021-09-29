@@ -10,14 +10,13 @@ export const ItemDetail = ({producto}) =>{
     function onAdd(cantidad) {
         setCompra(true)
         addProducto(producto,cantidad)
-    }
+    };
         return(producto.length === 0 ? (
-            <div className="col text-center">
-                <p>Cargando..</p></div>
-                )   :   (
-                <div className="row vistaProductoDetallada justify-content-center">
-                    <div className="col m-5">
-                        <div key={producto.id} className="card h-100 mb-4">
+            <div className="containerCargando"><p>Cargando..</p></div>
+        ):(
+            <div>
+                    <div key={producto.id} className="p-3 vistaProductoDetallada">
+                        <div className="vistaProductoDetallada1">
                             <div className="text-center ">
                                 <h3 className="mt-3">Guitarra {producto.mark}</h3>
                             </div>
@@ -25,31 +24,32 @@ export const ItemDetail = ({producto}) =>{
                                 <img alt="Item" className="card-img-top imagenGuitarra m-4" src={producto.image}/>
                             </div>
                             <div className="card-body  text-center">
-                                <h5 className="m-2">{producto.mark} {producto.model}</h5>
+                                <h5 className="m-2">Modelo: {producto.model}</h5>
                             </div>
-                            <div className="card-body text-center">
+                        </div>
+                        <div className="vistaProductoDetallada2">
+                            <div className="card-body m-2 text-center">
+                            <h5 className="mb-1">Descripción:</h5>
+                                <p>{producto.description}</p>
                                 <p className="m-2 lead">Precio: ${producto.price}</p>
                             </div>
-                            <div className="card-body m-2 text-center">
-                                <p className="mb-4 m-3 justify-content">Precio: {producto.description}</p>
-                            </div>
-                            <div className="">
-                            {Compra === false ? (<ItemCount initial={1} stock={producto.stock} onAdd={onAdd} />):
-                        <div>
+                            {Compra === false ? (<ItemCount initial={1} stock={producto.stock} onAdd={onAdd}/>
+                            ):(
                             <div>
-                                <Link to="/"><button className="btn btn-outline-dark m-2">Seguir comprando</button></Link>
+                                <div>
+                                    <Link to="/"><button className="btn btn-outline-dark m-2">Seguir comprando</button></Link>
+                                </div>
+                                <div>
+                                    <Link to="/chango/cart"><button className="btn btn-outline-dark m-2">Finalizar Compra</button></Link>
+                                </div>
                             </div>
-                            <div>
-                                <Link to="/chango/cart"><button className="btn btn-outline-dark m-2">Finalizar Compra</button></Link>
-                            </div>
-                        </div>
+                            )
                         }
-                            </div>
+                        </div>
                         </div>
                     </div>
-                </div>
-                )
-        )};
+        ))
+};
 
 export default ItemDetail;
 
