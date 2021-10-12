@@ -5,40 +5,32 @@ import { firestore } from "../firebase";
 import changoSucces from "../Images/changoSucces.png"
 import reloj from "../Images/reloj.png"
 
-
 const Cart = () => {
     const {Carrito,removeProduct,clear} = useContext(contexto);
-    const[PrecioTotal,setPrecioTotal] = useState(0);
+    const [PrecioTotal,setPrecioTotal] = useState(0);
     const [Pago,setPago] = useState(false);
     const [Procesando, setProcesando] = useState(false);
-
-    const precioTotal = () => {
-
-        let todosLosProductos = 0
-        for (const e of Carrito){
-            todosLosProductos += e.cantidad * e.producto.price
-        }
-        setPrecioTotal(todosLosProductos)
-    }
+    const [NombreCliente, setNombreCliente] = useState("");
+    const [EmailCliente, setEmailCliente] = useState("");
+    const [TelefonoCliente, setTelefonoCliente] = useState("");
 
     const CompraConfirmada = () =>{
         setPago(true)
         GenerateOrders()
     }
 
-    /* Error "Uncaught (in promise) FirebaseError: No document to update: projects/ecommerceguitarras/databases/(default)/documents/productos/ H7joxbDzSPOTPzolNiHX" */
-
     const UpdateStock = () => {
-        const collection = firestore.collection("productos")  /* <= indico cual es la coleccion que quiero actualizar */
-        for (const producto of Carrito) 
-            {collection.doc(producto.producto.id).update({ /* <= Indico a traves del id del producto seleccionado cual es el que quiero actualizar */
-                stock:(producto.producto.stock - producto.cantidad) /* <= Indico como quiero modificar la propiedad del producto en la coleccion */
-            })}
+        const collection = firestore.collection("productos")
+        for (const producto of Carrito){
+            collection.doc(producto.producto.id).update({
+                stock:producto.producto.stock-producto.cantidad
+            })
+            console.log(collection.doc(producto.producto.id))
+        }
     }
 
-    /* */
     const GenerateOrders = () => {
-        let productoComprado=[];
+        let productoComprado = [];
         let dia = new Date();
         let date = dia.getDate() + '-' + (dia.getMonth() + 1) + '-' + dia.getFullYear();
         for (const producto of Carrito) {
@@ -52,7 +44,9 @@ const Cart = () => {
         }
 
     let pedido={
-        buyer:{nombre:"Juan",email:"juan@gmail.com"},
+        buyer:{nombre: NombreCliente,
+        telefono:TelefonoCliente,
+        email:EmailCliente},
         productos:productoComprado,
         date:date,
         PrecioFinal:PrecioTotal
@@ -64,18 +58,37 @@ const Cart = () => {
         query.then(()=>{
             setProcesando(true)
             clear()
-        })
-    }
+        });
+    };
+    const nombreCliente = (e) => {
+        setNombreCliente(e.target.value)
+    };
+    const emailCliente = (e) => {
+        setEmailCliente(e.target.value)
+    };
+    const telefonoCliente = (e) => {
+        setTelefonoCliente(e.target.value)
+    };
 
     useEffect(() => {
+        const precioTotal = () => {
+
+            let todosLosProductos = 0
+            for (const e of Carrito){
+                todosLosProductos += e.cantidad * e.producto.price
+            }
+            setPrecioTotal(todosLosProductos)
+        }
         precioTotal();
-    }, [removeProduct])
+    }, [removeProduct,Carrito])
 
     return(
         <>
         {Carrito.length === 0 && Procesando === false? (
-                <div className="d-flex aling-items-center justify-content-center cart__Style">
-                    <p>No hay Producto en el carrito</p><Link to="/"><p>Volver a la tienda</p></Link>
+                <div className="d-flex aling-items-center justify-content-center cart__StyleVacio"> 
+                    <div className="styleVacio__info">
+                        <p>No hay Producto en el carrito</p><Link to="/"><p className="mx-3">Volver a la tienda</p></Link>
+                    </div>
                 </div>
         ):(
             <div>
@@ -107,29 +120,51 @@ const Cart = () => {
                                         <p className="mt-5">{e.producto.mark} {e.producto.model} (X{e.cantidad})</p>
                                     </div>
                                         <div className="">
-                                            <button className="btn btn-danger mb-3" onClick={()=>removeProduct(e.producto.id)} >Eliminar producto</button>
+                                            <button className="button menu__btn0 w-50" onClick={()=>removeProduct(e.producto.id)} >Eliminar producto</button>
                                         </div>
                                     </div>
                         )}
                     </div>
-                        <div className="carrito__menu">
-                            <p className="mt-2">Total de su compra : $ {PrecioTotal}</p>
-                            <div className="container justify-content-center">
-                                <div>
-                                    <a className="nav-link"><button onClick={CompraConfirmada} className="button menu__btn1 w-100">Realizar Pago</button></a>
+                    <div className="carrito__menu">
+                        <div className="bar"></div>
+                        <div className="formularioCliente">
+                            <form onSubmit={(e)=>e.preventDefault()}>
+                                <div className="campo__formularioCliente">
+                                    <label className="mx-2">Nombre y Apellido</label>
+                                    <input onChange={nombreCliente} type="text" placeholder="Nombre y Apellido" />
+                                </div>
+                                <div className="campo__formularioCliente">
+                                    <label>Email</label>
+                                    <input onChange={emailCliente} type="email" placeholder="Email" />
+                                </div>
+                                <div className="campo__formularioCliente">
+                                    <label>Telefono</label>
+                                    <input onChange={telefonoCliente} type="tel" placeholder="Telefono"/>
                                 </div>
                                 <div>
-                                    <Link to="/" className="nav-link" ><button className="button menu__btn2  w-100">Ver mas productos</button></Link>
+                                    <a className="nav-link" href="/#"><button onClick={CompraConfirmada} className="button menu__btn1 w-50">Confirmar Pedido</button></a>
+                                </div>
+                            </form>
+                        </div>
+                        <div className="detalleOrden2">
+                                <p className="mx-2">Total de su compra: </p><b>${PrecioTotal} </b> <div id="redi"></div>
+                            </div>
+
+                        <div className="d-flex flex-column align-items-center">
+                            <div className="d-flex container justify-content-center">
+                                <div>
+                                    <a href="/#" className="nav-link" ><button className="button menu__btn2  w-100">Ver mas productos</button></a>
                                 </div>
                                 <div>
-                                    <a className="nav-link"><button className="menu__btn3 button w-100" onClick={()=>clear()}>Limpiar Carrito</button></a>
+                                    <a href="/#" className="nav-link"><button className="menu__btn3 button w-100" onClick={()=>clear()}>Limpiar Carrito</button></a>
                                 </div>
-                                <div className="d-flex text-center justify-content-center">
-                                    <p className="mx-2">Envío Gratis</p><p className="material-icons">local_shipping</p>
-                                </div>
+                            </div>
+                            <div className="envioStyle">
+                                <p className="">Envío Gratis</p><p className="material-icons">local_shipping</p>
                             </div>
                         </div>
                     </div>
+                </div>
                 ):("")}
             </div>
         )}

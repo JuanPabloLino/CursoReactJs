@@ -2,6 +2,7 @@ import  { useContext,React, useState} from "react";
 import ItemCount from "./ItemCount"
 import { Link } from "react-router-dom";
 import { contexto } from "../context/CartContext";
+import { Spinner } from "react-bootstrap";
 
 export const ItemDetail = ({producto}) =>{
     const [Compra, setCompra] = useState(false);
@@ -12,7 +13,9 @@ export const ItemDetail = ({producto}) =>{
         addProducto(producto,cantidad)
     };
         return(producto.length === 0 ? (
-            <div className="containerCargando"><p>Cargando..</p></div>
+            <div className="containerCargando">
+                    <Spinner className="spinnerCarga" animation="border" />
+        </div>
         ):(
             <div>
                     <div key={producto.id} className="p-3 vistaProductoDetallada">
@@ -35,12 +38,12 @@ export const ItemDetail = ({producto}) =>{
                             </div>
                             {Compra === false ? (<ItemCount initial={1} stock={producto.stock} onAdd={onAdd}/>
                             ):(
-                            <div>
+                            <div className="vistaProductoDetallada3">
                                 <div>
                                     <Link to="/"><button className="btn btn-outline-dark m-2">Seguir comprando</button></Link>
                                 </div>
                                 <div>
-                                    <Link to="/chango/cart"><button className="btn btn-outline-dark m-2">Finalizar Compra</button></Link>
+                                    <Link to="/chango/cart"><button className="btn btn-outline-dark mb-2">Finalizar Compra</button></Link>
                                 </div>
                             </div>
                             )

@@ -6,65 +6,56 @@ import { firestore } from "../firebase";
 
 
 export const ItemListContainer = () =>{
-    const {tipoAcustica,sale,tipoElectrica} = useParams();
+    //const {tipoAcustica,sale,tipoElectrica} = useParams();
     const [productos,setProducto] = useState([]);
+    const { idCategoria , sale } = useParams();
+
+    // idCategoria  :  1  => Electricas;
+    // idCategoria  :  2  => Acusticas;
 
     useEffect(() =>  {
             const collection = firestore.collection("productos");
-            if(sale){
-                const query = collection.where("sale","==",true).get();
-                query
-                    .then((snapshot)=>{
-                        const docs = snapshot.docs;
-                        const productos = [];
-                        docs.forEach((doc)=>{
-                            const docSnapshot = doc
-                            let producto = {...docSnapshot.data(),id:docSnapshot.id}
-                            productos.push(producto)
-                        });
-                        setProducto(productos);
+            if (idCategoria !== undefined) {
+                setProducto([])
+                const query=collection.where("idCategoria","==",parseInt(idCategoria)).get()
+                console.log(idCategoria)
+                query.then((snapshot)=>{
+                    let productos=[]
+                    const docs=snapshot.docs
+                    docs.forEach(doc => {
+                        let producto=doc.data()
+                        producto.idCategoria=doc.idCategoria
+                        productos.push(producto)
                     });
-            }else if(tipoAcustica){
-                const query = collection.where("type","==","acústica").get();
-                    query
-                        .then((snapshot)=>{
-                        const docs = snapshot.docs;
-                        const productos = [];
-                        docs.forEach((doc)=>{
-                            const docSnapshot = doc;
-                            let producto = {...docSnapshot.data(),id:docSnapshot.id};
-                            productos.push(producto);
-                        })
-                        setProducto(productos);
-                    })
-            }else if(tipoElectrica){
-                const query = collection.where("type","==","eléctrica").get();
-                    query
-                        .then((snapshot)=>{
-                        const docs = snapshot.docs;
-                        const productos = [];
-                        docs.forEach((doc)=>{
-                            const docSnapshot = doc
-                            let producto = {...docSnapshot.data(),id:docSnapshot.id}
-                            productos.push(producto)
-                        });
-                        setProducto(productos);
-                    });
+                    setProducto(productos)
+                })
             }else{
-                const query = collection.get();
-                    query
-                        .then((snapshot)=>{
-                        const docs = snapshot.docs
-                        const productos = []
-                        docs.forEach((doc)=>{
-                            const docSnapshot = doc
-                            let producto = {...docSnapshot.data(),id:docSnapshot.id}
-                            productos.push(producto)
-                        });
-                        setProducto(productos);
-                        });
-            }
-    },[sale,tipoElectrica,tipoAcustica])
+                setProducto([])
+                const query=collection.get()
+                query.then((snapshot)=>{
+                    let productos=[]
+                    const docs=snapshot.docs
+                    docs.forEach(doc => {
+                        let producto=doc.data()
+                        producto.idCategoria = doc.idCategoria;
+                        productos.push(producto)
+                    });
+                    setProducto(productos)
+                })
+            }if(sale){
+                        const query = collection.where("sale","==",true).get();
+                            query
+                                .then((snapshot)=>{
+                                    const docs = snapshot.docs;
+                                    let productos = [];
+                                    docs.forEach((doc)=>{
+                                        const docSnapshot = doc
+                                        let producto = {...docSnapshot.data(),idCategoria:docSnapshot.idCategoria}
+                                        productos.push(producto)
+                                    });
+                                    setProducto(productos);
+                                })};
+        },[idCategoria, sale])
 
             return (
                 <section className="seccion__principal">

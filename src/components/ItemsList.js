@@ -1,10 +1,12 @@
 import { React, memo } from "react";
 import Item  from "./Item";
+import { Spinner } from "react-bootstrap";
 
 export const ItemsList = memo (({producto}) => {
     return(producto.length === 0 ? (
         <div className="containerCargando">
-                    <p>Cargando..</p></div>
+                    <Spinner className="spinnerCarga" animation="border" />
+        </div>
     ):(
         producto.map((producto) =>(
         <div key={producto.id}>
